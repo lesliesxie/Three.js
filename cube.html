@@ -9,21 +9,26 @@
 <body>
   <script src="./three.js-r139/build/three.js"></script>
   <script>
-    var scene = new THREE.Scene()
-    var geometry = new THREE.BoxGeometry(100, 100, 100)
+    var scene = new THREE.Scene()//创建3D场景对象Scene
+    var geometry = new THREE.BoxGeometry(100, 100, 100)//创建一个长方体几何对象Geometry
     var material = new THREE.MeshBasicMaterial({
       color: 0x0000ff
-    })
-    var mesh = new THREE.Mesh(geometry, material)
-    scene.add(mesh)
+    })//材质对象Material
+    var mesh = new THREE.Mesh(geometry, material)//网格模型对象Mesh
+    scene.add(mesh)//网格模型添加到场景中
+    // width和height用来设置Three.js输出的Canvas画布尺寸(像素px)
     var width = 800
     var height = 500
-    var camera = new THREE.PerspectiveCamera(30, width / height, 1, 3000)
-    camera.position.set(292, 223, 185)
-    camera.lookAt(0, 0, 0)
+
+    // 透视投影相机设置
+    var camera = new THREE.PerspectiveCamera(30, width / height, 1, 3000)// 30:视场角度, width / height:Canvas画布宽高比, 1:近裁截面, 3000：远裁截面
+    camera.position.set(292, 223, 185)//相机在Three.js三维坐标系中的位置
+    camera.lookAt(0, 0, 0)//相机观察目标指向Three.js坐标系原点
+
+    // 创建渲染器对象
     var renderer = new THREE.WebGLRenderer()
-    renderer.setSize(width, height)
-    renderer.render(scene, camera)
+    renderer.setSize(width, height)//设置three.js渲染区域的尺寸(像素px)
+    renderer.render(scene, camera)//执行渲染操作
     document.body.appendChild(renderer.domElement)
   </script>
 </body>
