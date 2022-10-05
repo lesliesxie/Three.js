@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./three.js-r139/build/three.js"></script>
+  <script>
+    var scene = new THREE.Scene()
+    var geometry = new THREE.BoxGeometry(100, 100, 100)
+    var material = new THREE.MeshBasicMaterial({
+      color: 0x0000ff
+    })
+    var mesh = new THREE.Mesh(geometry, material)
+    scene.add(mesh)
+    var width = 800
+    var height = 500
+    var camera = new THREE.PerspectiveCamera(30, width / height, 1, 3000)
+    camera.position.set(292, 223, 185)
+    camera.lookAt(0, 0, 0)
+    var renderer = new THREE.WebGLRenderer()
+    renderer.setSize(width, height)
+    renderer.render(scene, camera)
+    document.body.appendChild(renderer.domElement)
+  </script>
+</body>
+</html>
